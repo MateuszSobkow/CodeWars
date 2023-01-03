@@ -1,24 +1,20 @@
-import java.util.Arrays;
+import java.util.*;
+
+import static java.lang.String.valueOf;
 
 public class DescendingOrder {
     public static int sortDesc(final int num){
-        char[] arr = String.valueOf(num).toCharArray();
-        Arrays.sort(arr);
-        StringBuilder str = new StringBuilder()
+        ArrayList<String> arrayList = new ArrayList<>(List.of(valueOf(num).split("")));
+        Collections.sort(arrayList);
+        Collections.reverse(arrayList);
 
-//                Arrays.toString(String.valueOf(num).split(""));
-
-        System.out.println(Arrays.sort(str));
-
-        return 0;
-
-//        return Integer.parseInt((num+"").split("").st.reverse().join(""));
+        String str = String.join("", arrayList);
+        return Integer.parseInt(str);
     }
+    public static int sortDesc2(final int num){
 
-    public static void main(String[] args) {
-        System.out.println(sortDesc(123));
+        String[] array = String.valueOf(num).split("");
+        Arrays.sort(array, Collections.reverseOrder());
+        return Integer.parseInt(String.join("", array));
     }
-
-
-
 }
