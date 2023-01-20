@@ -8,17 +8,12 @@ public class Kata {
             return new int[0];
         if (b.length == 0)
             return a;
-        List<Integer> list = new ArrayList<>();
+        List<Integer> listA = new ArrayList<>(Arrays.stream(a).boxed().toList());
+        List<Integer> listB = new ArrayList<>(Arrays.stream(b).boxed().toList());
+        listA.removeAll(listB);
 
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < b.length; j++) {
-                if(a[i] != b[j])
-                    list.add(a[i]);
-            }
-        }
-        return list.stream().mapToInt(Integer::intValue).toArray();
-
-        }
+        return listA.stream().mapToInt(Integer::intValue).toArray();
+}
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(arrayDiff(new int[]{1, 1, 1, 2}, new int[]{2})));
