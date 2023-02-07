@@ -1,8 +1,8 @@
 public class ASum {
     public static long findNb(long m){
-        long mm =0, n =0;
-        while (mm < m)
-            mm += ++n * n *n;
-        return mm == m ? n : -1;
+        long totalVolume = 0, n = 0;
+        while (totalVolume < m)
+            totalVolume += ++n * n *n;
+        return totalVolume == m ? n : -1;
     }
 }
