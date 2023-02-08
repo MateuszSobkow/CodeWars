@@ -1,28 +1,33 @@
+import java.math.BigInteger;
+
 public class Kata {
     public static String incrementString(String str){
         StringBuilder sbDigits = new StringBuilder();
-        StringBuilder sbLetters = new StringBuilder();
+        int i;
 
-
-        for (int i = 0; i < str.length(); i++) {
+        for (i = str.length() - 1; i >= 0; i--) {
             if(Character.isDigit(str.charAt(i))){
                 sbDigits.append(str.charAt(i));
             }
             else
-                sbLetters.append(str.charAt(i));
+               break;
         }
-        if(sbDigits.length() == 0)
-            return String.valueOf(sbLetters.append(1));
 
-        StringBuilder sbDigitsPlusOne = new StringBuilder(String.valueOf(Integer.parseInt(String.valueOf(sbDigits)) + 1));
+        sbDigits.reverse();
+        if(sbDigits.length() == 0)
+            return str + "1";
+
+        BigInteger bigInteger = new BigInteger(sbDigits.toString());
+        StringBuilder sbDigitsPlusOne = new StringBuilder(bigInteger.add(BigInteger.valueOf(1)).toString());
+
         while(sbDigitsPlusOne.length() < sbDigits.length()){
             sbDigitsPlusOne.insert(0, "0");
         }
 
-        return (sbLetters.append(sbDigitsPlusOne)).toString();
+        return str.substring(0, i+1) + sbDigitsPlusOne;
     }
 
     public static void main(String[] args) {
-        System.out.println(incrementString("foobar0100"));
+        System.out.println(incrementString("foobar001"));
     }
 }
