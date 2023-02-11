@@ -9,6 +9,6 @@ public class Kata {
 
     public static void main(String[] args) {
         System.out.println(multiTabe(5));
-       
+
     }
 }
